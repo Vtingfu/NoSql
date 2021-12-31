@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_package = "com.BJTU.grpc.profileData";
+option java_outer_classname = "ProfileData";
+option java_multiple_files = false;
+
+// 处理画像数据请求
+service profileProvider {
+  // 获取用户画像
+  rpc GetUserProfile (UserProfileRequest) returns (UserProfileReply) {}
+
+  // 获取电影画像
+  rpc GetMovieProfile (MovieProfileRequest) returns (MovieProfileReply) {}
+}
+
+message UserProfileRequest {
+  string userId = 1;
+}
+message UserProfileReply {
+  string userId = 1;
+  string profile = 2;
+}
+
+message MovieProfileRequest {
+  string movieId = 1;
+}
+message MovieProfileReply {
+  string movieId = 1;
+  string profile = 2;
+}

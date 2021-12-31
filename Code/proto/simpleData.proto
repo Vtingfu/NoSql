@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_package = "com.BJTU.grpc.simpleData";
+option java_outer_classname = "SimpleData";
+option java_multiple_files = false;
+
+// 处理二级数据请求
+service SimpleDataProvider {
+  // 获取用户的打分数据
+  rpc GetUserRating (RatingRequest) returns (RatingReply) {}
+
+  // 获取电影数据
+  rpc GetMovieInfo (MovieRequest) returns (MovieReply) {}
+}
+
+message RatingRequest {
+  string userId = 1;
+}
+message RatingReply {
+  string userId = 1;
+  string rates = 2;
+}
+
+//movie
+message MovieRequest {
+  string movieId = 1;
+}
+message MovieReply {
+  string movieId = 1;
+  string movie_info = 2;
+}
+
+//tags
+message TagsRequest {
+  string tagsId = 1;
+}
+message TagsReply {
+  string tagsId = 1;
+  string tags = 2;
+}
